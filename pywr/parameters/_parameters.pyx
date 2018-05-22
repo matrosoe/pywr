@@ -820,8 +820,8 @@ cdef class AnnualHarmonicSeriesParameter(Parameter):
     cpdef update(self, double[:] values):
         n = len(self.amplitudes)
         self.mean = values[0]
-        self.amplitudes[...] = values[1:n+1]
-        self.phases[...] = values[n+1:]
+        self._amplitudes[...] = values[1:n+1]
+        self._phases[...] = values[n+1:]
 
     cpdef double[:] lower_bounds(self):
         return np.r_[self._mean_lower_bounds, self._amplitude_lower_bounds, self._phase_lower_bounds]
